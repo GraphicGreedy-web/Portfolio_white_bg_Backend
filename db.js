@@ -3,23 +3,48 @@ import { brand } from "./models/Models.js"
 const logos = [
     {
         order: 1,
-        title: 'Minimal Tech Co.',
-        image: 'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
+        title: 'Instagram Post 1',
+        image: 'https://www.instagram.com/p/C2u3H1Wx4Gm/?igsh=MXVzaWpqbm83czM3aA==',
     },
     {
         order: 2,
-        title: 'Artisan Coffee',
-        image: 'https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800',
+        title: 'Instagram Post 2',
+        image: 'https://www.instagram.com/p/C5vaLbmPlh4/?igsh=eG9qNTYyamY4dWti',
     },
     {
         order: 3,
-        title: 'Urban Studio',
-        image: 'https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800',
+        title: 'Instagram Post 3',
+        image: 'https://www.instagram.com/p/DFfhalCMT1S/?igsh=MWowMnc3bDMyYjQzZg==',
     },
     {
         order: 4,
-        title: 'Eco Brand',
-        image: 'https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800',
+        title: 'Instagram Post 4',
+        image: 'https://www.instagram.com/p/DF0EVu0P0FC/?igsh=MXJtdDd4ajQzMzFwaw==',
+    },
+    {
+        order: 5,
+        title: 'Instagram Post 5',
+        image: 'https://www.instagram.com/p/DIqtVkNPRI_/?igsh=MWU0MmgwbmJ5eWs0ZA==',
+    },
+    {
+        order: 6,
+        title: 'Instagram Post 6',
+        image: 'https://www.instagram.com/p/DPOCmEqCGMd/?igsh=a2V5YTJqYzVqMHc1',
+    },
+    {
+        order: 7,
+        title: 'Instagram Post 7',
+        image: 'https://www.instagram.com/p/DPWidxDDpNO/?igsh=MXV2eGFrb21uNDBobQ==',
+    },
+    {
+        order: 8,
+        title: 'Instagram Post 8',
+        image: 'https://www.instagram.com/p/DPhe2zVgQ0g/?igsh=MTRvMHl6ODhjbzR4Zw==',
+    },
+    {
+        order: 9,
+        title: 'Instagram Post 9',
+        image: 'https://www.instagram.com/p/DQea_k3D0DI/?igsh=b2xsYXB1YmZwb3Ry',
     },
 ];
 export const connectDB = async () => {
