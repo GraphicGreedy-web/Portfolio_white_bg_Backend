@@ -49,8 +49,18 @@ const logos = [
 ];
 export const connectDB = async () => {
     await mongoose.connect(process.env.MONGO_URI)
-    // await brand.deleteMany({})
-    // console.log("brand dleeted")
-    // const logo = await brand.insertMany(logos)
-    // console.log("logos inserted: ", logo)
+
+    for (const logo of logos) {
+        await brand.updateOne(
+            { image: logo.image },
+            {
+                $set: {
+                    order: logo.order,
+                    title: logo.title,
+                    image: logo.image,
+                },
+            },
+            { upsert: true }
+        )
+    }
 }

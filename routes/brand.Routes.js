@@ -2,7 +2,7 @@ import express from "express"
 import { brand } from "../models/Models.js"
 const router = express.Router()
 const allBrand = async (req, res) => {
-    const brands = await brand.find({})
+    const brands = await brand.find({}).sort({ order: 1, createdAt: 1 })
     // console.log("brands: ", brands)
     res.json({ brands, message: "Hello from contact controller" })
 }

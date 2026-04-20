@@ -10,8 +10,10 @@ import videoRoutes from "./routes/video.Routes.js"
 import visualCommRoutes from "./routes/visualComm.Routes.js"
 import { connectDB } from "./db.js"
 const app = express()
-// const allowedOrigin = process.env.FRONTEND_URL
-const allowedOrigin = process.env.FRONTEND_URI.split(",").map(o => o.trim())
+const allowedOrigin = (process.env.FRONTEND_URL || "")
+    .split(",")
+    .map((o) => o.trim())
+    .filter(Boolean)
 console.log("back: ", allowedOrigin)
 app.use(cors({
     origin: allowedOrigin,
