@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import { brand } from "./models/Models.js"
+import { brand, video, visualComm } from "./models/Models.js"
 const logos = [
     {
         order: 1,
@@ -47,6 +47,106 @@ const logos = [
         image: 'https://www.instagram.com/p/DQea_k3D0DI/?igsh=b2xsYXB1YmZwb3Ry',
     },
 ];
+const visuals = [
+    {
+        order: 1,
+        title: "Music Festival 2024",
+        category: "Event",
+        image: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+    {
+        order: 2,
+        title: "Art Exhibition",
+        category: "Culture",
+        image: "https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+    {
+        order: 3,
+        title: "Tech Summit",
+        category: "Conference",
+        image: "https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+    {
+        order: 4,
+        title: "Fashion Week",
+        category: "Fashion",
+        image: "https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+    {
+        order: 5,
+        title: "Design Conference",
+        category: "Design",
+        image: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+    {
+        order: 6,
+        title: "Food Festival",
+        category: "Culinary",
+        image: "https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+    {
+        order: 7,
+        title: "Photography Exhibition",
+        category: "Art",
+        image: "https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+    {
+        order: 8,
+        title: "Innovation Summit",
+        category: "Business",
+        image: "https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+];
+const videos = [
+    {
+        order: 1,
+        title: "Brand Story: Luxe Fashion",
+        category: "Brand Film",
+        thumbnail: "https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800",
+        duration: "2:30",
+        link: "https://youtu.be/UzvswBBTIZ8",
+    },
+    {
+        order: 2,
+        title: "Product Launch Campaign",
+        category: "Commercial",
+        thumbnail: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
+        duration: "1:45",
+        link: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+    {
+        order: 3,
+        title: "Motion Graphics Reel",
+        category: "Motion Design",
+        thumbnail: "https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800",
+        duration: "3:15",
+        link: "https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+    {
+        order: 4,
+        title: "Event Highlight Video",
+        category: "Documentary",
+        thumbnail: "https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800",
+        duration: "4:20",
+        link: "https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+    {
+        order: 5,
+        title: "Social Media Campaign",
+        category: "Digital Content",
+        thumbnail: "https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800",
+        duration: "0:45",
+        link: "https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+    {
+        order: 6,
+        title: "Corporate Identity Video",
+        category: "Corporate",
+        thumbnail: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
+        duration: "2:00",
+        link: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
+    },
+];
 export const connectDB = async () => {
     await mongoose.connect(process.env.MONGO_URI)
 
@@ -58,6 +158,38 @@ export const connectDB = async () => {
                     order: logo.order,
                     title: logo.title,
                     image: logo.image,
+                },
+            },
+            { upsert: true }
+        )
+    }
+
+    for (const visual of visuals) {
+        await visualComm.updateOne(
+            { image: visual.image },
+            {
+                $set: {
+                    order: visual.order,
+                    title: visual.title,
+                    category: visual.category,
+                    image: visual.image,
+                },
+            },
+            { upsert: true }
+        )
+    }
+
+    for (const item of videos) {
+        await video.updateOne(
+            { title: item.title },
+            {
+                $set: {
+                    order: item.order,
+                    title: item.title,
+                    category: item.category,
+                    thumbnail: item.thumbnail,
+                    duration: item.duration,
+                    link: item.link,
                 },
             },
             { upsert: true }

@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 export const visualCommSchema = new mongoose.Schema([{
     order: Number,
     image: String,
+    category: String,
     updatedAt: Number,
     title: String,
     description: String,
