@@ -50,51 +50,117 @@ const logos = [
 const visuals = [
     {
         order: 1,
-        title: "Music Festival 2024",
-        category: "Event",
-        image: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
+        title: "3 AM",
+        category: "Poster",
+        image: "/images/posters/3-am.png",
     },
     {
         order: 2,
-        title: "Art Exhibition",
-        category: "Culture",
-        image: "https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800",
+        title: "Artboard 1 Copy 3",
+        category: "Poster",
+        image: "/images/posters/artboard-1-copy-3.png",
     },
     {
         order: 3,
-        title: "Tech Summit",
-        category: "Conference",
-        image: "https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800",
+        title: "Coffee Day Social Media Post",
+        category: "Poster",
+        image: "/images/posters/coffee-day-social-media-post.png",
     },
     {
         order: 4,
-        title: "Fashion Week",
-        category: "Fashion",
-        image: "https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800",
+        title: "Engine Need A Rest",
+        category: "Poster",
+        image: "/images/posters/engine-need-a-rest.png",
     },
     {
         order: 5,
-        title: "Design Conference",
-        category: "Design",
-        image: "https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=800",
+        title: "Face Color",
+        category: "Poster",
+        image: "/images/posters/face-color.png",
     },
     {
         order: 6,
-        title: "Food Festival",
-        category: "Culinary",
-        image: "https://images.pexels.com/photos/6077447/pexels-photo-6077447.jpeg?auto=compress&cs=tinysrgb&w=800",
+        title: "Group 1 Copy 2",
+        category: "Poster",
+        image: "/images/posters/group-1-copy-2.png",
     },
     {
         order: 7,
-        title: "Photography Exhibition",
-        category: "Art",
-        image: "https://images.pexels.com/photos/7841440/pexels-photo-7841440.jpeg?auto=compress&cs=tinysrgb&w=800",
+        title: "Headset",
+        category: "Poster",
+        image: "/images/posters/headset.png",
     },
     {
         order: 8,
-        title: "Innovation Summit",
-        category: "Business",
-        image: "https://images.pexels.com/photos/7991309/pexels-photo-7991309.jpeg?auto=compress&cs=tinysrgb&w=800",
+        title: "Sketch 1",
+        category: "Poster",
+        image: "/images/posters/img-20240130-222233-769.jpg",
+    },
+    {
+        order: 9,
+        title: "Sketch 2",
+        category: "Poster",
+        image: "/images/posters/img-20240414-171142-494.jpg",
+    },
+    {
+        order: 10,
+        title: "Layer 8",
+        category: "Poster",
+        image: "/images/posters/layer-8.png",
+    },
+    {
+        order: 11,
+        title: "Mumbai Blast 2008",
+        category: "Poster",
+        image: "/images/posters/mumbai-blast-2008.png",
+    },
+    {
+        order: 12,
+        title: "One Day",
+        category: "Poster",
+        image: "/images/posters/one-day.png",
+    },
+    {
+        order: 13,
+        title: "Orange Poster",
+        category: "Poster",
+        image: "/images/posters/orange-poster.png",
+    },
+    {
+        order: 14,
+        title: "Red Bull",
+        category: "Poster",
+        image: "/images/posters/red-bull.png",
+    },
+    {
+        order: 15,
+        title: "Sherlock",
+        category: "Poster",
+        image: "/images/posters/sherlock.png",
+    },
+    {
+        order: 16,
+        title: "Standup Comedy",
+        category: "Poster",
+        image: "/images/posters/standup-comedy.png",
+    },
+    {
+        order: 17,
+        title: "The Sun Remembers Everything",
+        category: "Poster",
+        image: "/images/posters/the-sun-remembers-everything.png",
+    },
+    {
+        order: 18,
+        title: "Transparent Body",
+        category: "Poster",
+        image: "/images/posters/transparent-body.png",
+    },
+    {
+        order: 19,
+        title: "Woman In Focus",
+        category: "Poster",
+        image: "/images/posters/woman-in-focus.png",
     },
 ];
 const videos = [
@@ -163,6 +229,8 @@ export const connectDB = async () => {
             { upsert: true }
         )
     }
+
+    await visualComm.deleteMany({ image: /^https:\/\/images\.pexels\.com\// })
 
     for (const visual of visuals) {
         await visualComm.updateOne(
