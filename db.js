@@ -3,48 +3,48 @@ import { brand, video, visualComm } from "./models/Models.js"
 const logos = [
     {
         order: 1,
-        title: 'Instagram Post 1',
-        image: 'https://www.instagram.com/p/C2u3H1Wx4Gm/?igsh=MXVzaWpqbm83czM3aA==',
+        title: 'Brand Design 1',
+        image: '/images/logos/brand-design-1.svg',
     },
     {
         order: 2,
-        title: 'Instagram Post 2',
-        image: 'https://www.instagram.com/p/C5vaLbmPlh4/?igsh=eG9qNTYyamY4dWti',
+        title: 'Brand Design 2',
+        image: '/images/logos/brand-design-2.svg',
     },
     {
         order: 3,
-        title: 'Instagram Post 3',
-        image: 'https://www.instagram.com/p/DFfhalCMT1S/?igsh=MWowMnc3bDMyYjQzZg==',
+        title: 'Brand Design 3',
+        image: '/images/logos/brand-design-3.svg',
     },
     {
         order: 4,
-        title: 'Instagram Post 4',
-        image: 'https://www.instagram.com/p/DF0EVu0P0FC/?igsh=MXJtdDd4ajQzMzFwaw==',
+        title: 'Brand Design 4',
+        image: '/images/logos/brand-design-4.svg',
     },
     {
         order: 5,
-        title: 'Instagram Post 5',
-        image: 'https://www.instagram.com/p/DIqtVkNPRI_/?igsh=MWU0MmgwbmJ5eWs0ZA==',
+        title: 'Brand Design 5',
+        image: '/images/logos/brand-design-5.svg',
     },
     {
         order: 6,
-        title: 'Instagram Post 6',
-        image: 'https://www.instagram.com/p/DPOCmEqCGMd/?igsh=a2V5YTJqYzVqMHc1',
+        title: 'Brand Design 6',
+        image: '/images/logos/brand-design-6.svg',
     },
     {
         order: 7,
-        title: 'Instagram Post 7',
-        image: 'https://www.instagram.com/p/DPWidxDDpNO/?igsh=MXV2eGFrb21uNDBobQ==',
+        title: 'Brand Design 7',
+        image: '/images/logos/brand-design-7.svg',
     },
     {
         order: 8,
-        title: 'Instagram Post 8',
-        image: 'https://www.instagram.com/p/DPhe2zVgQ0g/?igsh=MTRvMHl6ODhjbzR4Zw==',
+        title: 'Brand Design 8',
+        image: '/images/logos/brand-design-8.svg',
     },
     {
         order: 9,
-        title: 'Instagram Post 9',
-        image: 'https://www.instagram.com/p/DQea_k3D0DI/?igsh=b2xsYXB1YmZwb3Ry',
+        title: 'Brand Design 9',
+        image: '/images/logos/brand-design-9.svg',
     },
 ];
 const visuals = [
@@ -216,9 +216,12 @@ const videos = [
 export const connectDB = async () => {
     await mongoose.connect(process.env.MONGO_URI)
 
+    await brand.deleteMany({ image: /^https:\/\/www\.instagram\.com\// })
+    await brand.deleteMany({ image: /^\/images\/posters\// })
+
     for (const logo of logos) {
         await brand.updateOne(
-            { image: logo.image },
+            { order: logo.order },
             {
                 $set: {
                     order: logo.order,

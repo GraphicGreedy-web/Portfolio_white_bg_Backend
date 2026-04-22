@@ -6,6 +6,7 @@ export const videoSchema = new mongoose.Schema([{
     description: String,
     link: String,
     thumbnail: String,
+    thumbnailPublicId: String,
     duration: String,
     updatedAt: Number,
     title: String,

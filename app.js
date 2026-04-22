@@ -5,7 +5,10 @@ import cookieParser from "cookie-parser";
 import express from "express"
 import brandRoutes from "./routes/brand.Routes.js"
 import commentsRoutes from "./routes/comment.Routes.js"
+import cmsRoutes from "./routes/cms.Routes.js"
 import contactRoutes from "./routes/contact.Routes.js"
+import instagramRoutes from "./routes/instagram.Routes.js"
+import uploadRoutes from "./routes/upload.Routes.js"
 import videoRoutes from "./routes/video.Routes.js"
 import visualCommRoutes from "./routes/visualComm.Routes.js"
 import { connectDB } from "./db.js"
@@ -25,8 +28,11 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 connectDB()
 app.use("/api/brands", brandRoutes)
+app.use("/api/cms", cmsRoutes)
 app.use("/api/comments", commentsRoutes)
 app.use("/api/contacts", contactRoutes)
+app.use("/api/instagram", instagramRoutes)
+app.use("/api/uploads", uploadRoutes)
 app.use("/api/videos", videoRoutes)
 app.use("/api/visualComms", visualCommRoutes)
 app.use((err, req, res, next) => {
