@@ -223,7 +223,7 @@ export const connectDB = async () => {
         await brand.updateOne(
             { order: logo.order },
             {
-                $set: {
+                $setOnInsert: {
                     order: logo.order,
                     title: logo.title,
                     image: logo.image,
@@ -239,7 +239,7 @@ export const connectDB = async () => {
         await visualComm.updateOne(
             { image: visual.image },
             {
-                $set: {
+                $setOnInsert: {
                     order: visual.order,
                     title: visual.title,
                     category: visual.category,
@@ -254,7 +254,7 @@ export const connectDB = async () => {
         await video.updateOne(
             { title: item.title },
             {
-                $set: {
+                $setOnInsert: {
                     order: item.order,
                     title: item.title,
                     category: item.category,
