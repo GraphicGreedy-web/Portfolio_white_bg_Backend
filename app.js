@@ -4,6 +4,7 @@ dotenv.config()
 import cookieParser from "cookie-parser";
 import express from "express"
 import brandRoutes from "./routes/brand.Routes.js"
+import blogRoutes from "./routes/blog.Routes.js"
 import commentsRoutes from "./routes/comment.Routes.js"
 import cmsRoutes from "./routes/cms.Routes.js"
 import contactRoutes from "./routes/contact.Routes.js"
@@ -28,6 +29,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 connectDB()
 app.use("/api/brands", brandRoutes)
+app.use("/api/blogs", blogRoutes)
 app.use("/api/cms", cmsRoutes)
 app.use("/api/comments", commentsRoutes)
 app.use("/api/contacts", contactRoutes)
